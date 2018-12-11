@@ -102,6 +102,7 @@ return view('abatjours.create');
      */
     public function destroy($id)
     {
-        //
+        Abatjours::find($id)->delete();
+        return redirect('/abatjours');
     }
 }

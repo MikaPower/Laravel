@@ -17,9 +17,6 @@
         </div>
     </div>
 
-    n
-
-
 
     <div class="field">
         <label class="label" for="nome">Nome</label>
@@ -45,8 +42,24 @@
 
         </div>
     </div>
-
 </form>
+
+
+<form METHOD="post" action="/abatjours/{{ $abatjour->id}}" style="margin-bottom:50px;">
+
+@method('DELETE')
+    @csrf
+
+
+    <div class="field">
+        <div class="control">
+            <button type="submit" class="button">Delete</button>
+
+        </div>
+    </div>
+</form>
+
+
 @endsection
 
 
