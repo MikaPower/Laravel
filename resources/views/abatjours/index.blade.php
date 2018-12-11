@@ -6,17 +6,9 @@
 </head>
 <body>
 <h1>Abatjours Apresentacao</h1>
-<?php  dd($abatjours); ?>
-<ul><?php foreach ($abatjours as $abatjour) : ?>
 
-
-        <li> {{ $abatjour->name }} </li>
-    <?php endforeach; ?>
-</ul>
-
-
-<!--    @foreach ($abatjours as $abatjour)
-<li>     {{ $abatjours->name }}      </li>
-    @endforeach-->
+    @foreach ($abatjours as $abatjour)
+<li>     {{$abatjour->name}}      </li>
+    @endforeach
 </body>
 </html>

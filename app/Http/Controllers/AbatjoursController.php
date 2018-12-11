@@ -14,8 +14,7 @@ class AbatJoursController extends Controller
      */
     public function index()
     {
-        $abatjours=Abatjours::All();
-        return view('abatjours.index',compact('abatjours'));
+        return view('abatjours.index',['abatjours'=>Abatjours::all()]);
     }
 
 
@@ -47,6 +46,9 @@ return view('abatjours.create');
       return redirect('/abatjours');
     }
 
+
+
+
     /**
      * Display the specified resource.
      *
@@ -66,7 +68,10 @@ return view('abatjours.create');
      */
     public function edit($id)
     {
-        //
+
+        $abatjour = Abatjours::find($id);
+
+        return view('abatjours.edit',compact('abatjour'));
     }
 
     /**
@@ -78,7 +83,15 @@ return view('abatjours.create');
      */
     public function update(Request $request, $id)
     {
-        //
+        $abatjour= Abatjours::find($id);
+        $abatjour->referencia = request('referencia');
+        $abatjour->name = request('name');
+        $abatjour->price = request('price');
+
+        $abatjour->save();
+
+        return redirect('abatjours');
+
     }
 
     /**
