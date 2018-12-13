@@ -16,3 +16,7 @@ Route::get('/','AbatJoursController@index');
 
 Route::resource('abatjours','AbatJoursController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
