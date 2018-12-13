@@ -54,7 +54,6 @@
     <div class="field">
         <div class="control">
             <button type="submit" class="button">Delete</button>
-
         </div>
     </div>
 </form>
