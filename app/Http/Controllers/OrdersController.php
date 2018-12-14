@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        return view('orders.index', ['orders' => Order::all()]);
     }
 
     /**
@@ -24,7 +28,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        return view('orders.create');
     }
 
     /**
@@ -35,7 +39,8 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Order::create($request->all());
+        return redirect('/orders');
     }
 
     /**
@@ -45,8 +50,10 @@ class OrdersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
+
     {
-        //
+        return view('orders.show',compact('order'));
+
     }
 
     /**

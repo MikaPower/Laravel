@@ -21,7 +21,6 @@
     {{csrf_field()}}
 
 
-
     <form method="post" action="/abatjours">
         <div class="form-group">
             <label for="exampleInputEmail1">Referencia</label>

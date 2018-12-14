@@ -12,9 +12,15 @@ class AbatJoursController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('abatjours.index',['abatjours'=>Abatjours::all()]);
+        return view('abatjours.index', ['abatjours' => Abatjours::all()]);
     }
 
 
@@ -25,34 +31,32 @@ class AbatJoursController extends Controller
      */
     public function create()
     {
-return view('abatjours.create');
+        return view('abatjours.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
-      $abatjour= new Abatjours();
+        $abatjour = new Abatjours();
 
-      $abatjour->referencia=request('referencia');
-      $abatjour->name=request('name');
-      $abatjour->price=request('price');
+        $abatjour->referencia = request('referencia');
+        $abatjour->name = request('name');
+        $abatjour->price = request('price');
 
-      $abatjour->save();
-      return redirect('/abatjours');
+        $abatjour->save();
+        return redirect('/abatjours');
     }
-
-
 
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -63,7 +67,7 @@ return view('abatjours.create');
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -71,19 +75,19 @@ return view('abatjours.create');
 
         $abatjour = Abatjours::find($id);
 
-        return view('abatjours.edit',compact('abatjour'));
+        return view('abatjours.edit', compact('abatjour'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $abatjour= Abatjours::find($id);
+        $abatjour = Abatjours::find($id);
         $abatjour->referencia = request('referencia');
         $abatjour->name = request('name');
         $abatjour->price = request('price');
@@ -97,7 +101,7 @@ return view('abatjours.create');
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
