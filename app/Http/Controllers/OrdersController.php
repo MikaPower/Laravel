@@ -62,9 +62,9 @@ class OrdersController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+        $order=Order::find($id);
     }
 
     /**
@@ -74,9 +74,9 @@ class OrdersController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Order $order)
     {
-        //
+        $order->update(request(['description']));
     }
 
     /**
@@ -87,6 +87,7 @@ class OrdersController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect('/orders');
     }
 }
