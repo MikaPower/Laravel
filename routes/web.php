@@ -16,7 +16,7 @@ Route::get('/','AbatJoursController@index');
 
 Route::resource('abatjours','AbatJoursController');
 
-
+Route::resource('orders','OrdersController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

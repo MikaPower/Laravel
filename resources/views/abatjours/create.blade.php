@@ -23,7 +23,7 @@
     <form method="post" action="/abatjours">
         <div class="form-group">
             <label for="exampleInputEmail1">Referencia</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            <input type="text" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp"
                    name="referencia" placeholder="Referencia">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
