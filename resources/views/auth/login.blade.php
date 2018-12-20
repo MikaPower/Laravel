@@ -56,7 +56,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-                                //Register button
+                               <!-- Register button-->
                                 <a href="http://127.0.0.1:8000/register"  <button type="submit"  class="btn btn-dark">Register</button> </a>
 
 

@@ -23,11 +23,17 @@
                 <input type="text" class="form-control" id="exampleInputPassword1" name="description" placeholder="Texto">
             </div>
         </div>
-
-
     </div>
+
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+
 </div>
-<button type="submit" class="btn btn-primary">Submit</button>
+
 </form>
 <!--
 <script>
