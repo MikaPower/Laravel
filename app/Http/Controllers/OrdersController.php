@@ -9,7 +9,7 @@ class OrdersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+ $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -37,9 +37,9 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        Order::create($request->all());
+        Order::create(request(['quantity','description']));
         return redirect('/orders');
     }
 
@@ -62,9 +62,10 @@ class OrdersController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        $order=Order::find($id);
+        return view('orders.edit',compact('order'));
+
     }
 
     /**
@@ -76,7 +77,7 @@ class OrdersController extends Controller
      */
     public function update(Order $order)
     {
-        $order->update(request(['description']));
+        $order->update(request(['description','quantity']));
     }
 
     /**

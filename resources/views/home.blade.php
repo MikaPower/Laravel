@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
 <div class="container">
@@ -15,15 +15,17 @@
                     @endif
 
                     You are logged in!
+                    <div id="delayMsg"></div>
+                    <input type="button" onclick="delayRedirect()" value="Click to Redirect"/>
+                    <?php
+                     redirectafterlogin();?>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-<div id="delayMsg"></div>
-<input type="button" value="Click to Redirect"/>
 
 
 
@@ -36,8 +38,19 @@
             count--;
             document.getElementById('countDown').innerHTML = count;
             if (count == 0) {
-                window.location = 'https://www.google.com';
+                window.location = 'http://127.0.0.1:8000/orders';
             }
         },1000);
     }
 </script>
+
+
+
+
+<?php
+    function redirectafterlogin() {
+        sleep(1);
+       return redirect('orders');
+
+    }
+?>

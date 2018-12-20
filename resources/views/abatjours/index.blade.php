@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
