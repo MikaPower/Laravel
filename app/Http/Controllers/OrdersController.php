@@ -39,9 +39,24 @@ class OrdersController extends Controller
      */
     public function store()
     {
-        Order::create(request(['quantity','description']));
+
+
+
+        //Order::create(request(['owners_id'==1,'date'=>'getdate();','quantity','description']));//still requires ownners id
+   $order= new Order();
+        $order->quantity = request("quantity");
+        $order->description = request("description");
+        $order->owners_id = 0;
+        $order->save();
+
+
         return redirect('/orders');
     }
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -78,6 +93,7 @@ class OrdersController extends Controller
     public function update(Order $order)
     {
         $order->update(request(['description','quantity']));
+        return redirect('/orders');
     }
 
     /**

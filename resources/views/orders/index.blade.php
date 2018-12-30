@@ -2,17 +2,25 @@
 
 
 
-<h1>Orders Apresentacao</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Numero pedido#</th>
+        <th  scope="col">Quantidade</th>
+        <th  class="col-md-8" scope="col">Descrição</th>
+    </tr>
+    </thead>
+    <tbody>
 
-
-<div class="list-group">
-
-
-
-@foreach ($orders as $order)
-   <a href="#" class="list-group-item list-group-item-action active">{{$order->description}}</a>
-@endforeach
-    </div>
-
-
+        <?php
+        foreach ($orders as $order){
+            echo "<tr>";
+            echo "<th scope=\"row\"> <a href=\"/orders/$order->id/edit\" > $order->id </a> </th>";
+            echo "<td>$order->quantity</td>";
+            echo "<td> $order->description";
+            echo "</tr>";
+         }
+        ?>
+    </tbody>
+</table>
 

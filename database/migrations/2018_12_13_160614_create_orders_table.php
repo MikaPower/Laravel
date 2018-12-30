@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('owners_id');
             $table->integer('quantity');
             $table->longText('description');
-            $table->dateTime('date');
             $table->timestamps();
         });
     }

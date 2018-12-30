@@ -12,7 +12,7 @@
                     <label for="exampleInputEmail1">Quantidade</label>
                     <input type="text" class="form-control is-valid" id="exampleInputEmail1"
                            aria-describedby="emailHelp"
-                           name="quantidade" placeholder="Numero">
+                           name="quantity" placeholder="Numero">
                     </small>
                 </div>
         </div>
