@@ -12,7 +12,7 @@
                     <label for="exampleInputEmail1">Quantidade</label>
                     <input type="text" class="form-control is-valid" id="exampleInputEmail1"
                            aria-describedby="emailHelp"
-                           name="quantity" placeholder="Numero" value="{{old('quantity')}}">
+                           name="quantity" placeholder="Numero" value="{{old('quantity')}}" required >
                     </small>
                 </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="exampleInputPassword1">Produto</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="description" placeholder="Texto"  value="{{ old('description')}}">
+                <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="description" placeholder="Texto"  value="{{ old('description')}}" required>
             </div>
         </div>
     </div>
