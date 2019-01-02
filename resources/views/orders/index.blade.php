@@ -15,7 +15,7 @@
         <?php
         foreach ($orders as $order){
             echo "<tr>";
-            echo "<th scope=\"row\"> <a href=\"/orders/$order->id/edit\" > $order->id </a> </th>";
+            echo "<th scope=\"row\"> <a href=\"/orders/$order->id\" > $order->id </a> </th>";
             echo "<td>$order->quantity</td>";
             echo "<td> $order->description";
             echo "</tr>";

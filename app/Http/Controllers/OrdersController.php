@@ -40,10 +40,14 @@ class OrdersController extends Controller
     public function store()
     {
 
-
-
         //Order::create(request(['owners_id'==1,'date'=>'getdate();','quantity','description']));//still requires ownners id
    $order= new Order();
+
+
+    //attributes=request->validade(['quantity' => ['required', 'min:3']])
+        //Order::create($attributes);
+
+
         $order->quantity = request("quantity");
         $order->description = request("description");
         $order->owners_id = 0;
