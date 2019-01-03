@@ -4,23 +4,24 @@
 <div class="row justify-content-center">
 <h1>Pedidos</h1>
 </div>
+
 <div class="container" id="contem">
     <div class="row justify-content-center "id="teste">
         <div class="col">
             <form method="post" action="/orders" id="add_name">
                 {{csrf_field()}}
                 <div class="form-group" id="dynamic_field">
-                    <label for="exampleInputEmail1">Quantidade</label>
+                    <label for="exampleInputEmail1">Numero Pedido</label>
                     <input type="text" class="form-control is-valid" id="exampleInputEmail1"
                            aria-describedby="emailHelp"
-                           name="name[]" placeholder="Numero" value="{{old('quantity')}}" required >
+                           name="order" placeholder="Numero" value="{{old('quantity')}}" required >
                 </div>
         </div>
 
         <div class="col-6">
             <div class="form-group" id="testev1">
-                <label for="exampleInputPassword1">Produto</label>
-                <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="description[]" placeholder="Texto"  value="{{ old('description')}}" required>
+                <label for="exampleInputPassword1">Titulo</label>
+                <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="title" placeholder="Texto"  value="{{ old('description')}}" required>
             </div>
         </div>
 
