@@ -4,10 +4,9 @@
 <div class="row justify-content-center">
 <h1>Pedidos</h1>
 </div>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-3">
-
+<div class="container" id="contem">
+    <div class="row justify-content-center "id="teste">
+        <div class="col">
             <form method="post" action="/orders" id="add_name">
                 {{csrf_field()}}
                 <div class="form-group" id="dynamic_field">
@@ -19,13 +18,20 @@
         </div>
 
         <div class="col-6">
-            <div class="form-group">
+            <div class="form-group" id="testev1">
                 <label for="exampleInputPassword1">Produto</label>
                 <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="description[]" placeholder="Texto"  value="{{ old('description')}}" required>
             </div>
         </div>
+
+
+        <div class="col-3">
+            <button type="button" name="add" id="add" class="btn btn-success">Add More</button>
+        </div>
+
+
+
     </div>
-    <button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
     <div class="row">
         <div class="col">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -49,17 +55,23 @@
 
         $('#add').click(function(){
             i++;
+            $('#contem').append(
 
-            $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added">' +
-                '<th scope="row">1</th>'+
-                '<td>' +
+
+                '<div class="row" id="row'+i+'" class="dynamic-added">' +
+                '<div class="col">'+
                 '<input type="text" class="form-control is-valid" id="exampleInputEmail aria-describedby="emailHelp" name="name[]" placeholder="Numero" value="{{old('quantity')}}" required > ' +
+                '</div>'+
+            '<div class="col">'+
             '<input type="text" class="form-control is-valid" id="coluna'+i+'" name="description[]" placeholder="Texto"  value="{{ old('description')}}" required>  ' +
-            '</td>' +
-            '<td>' +
+            '</div>'+
+            '<div class="col">'+
             '<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button>' +
-            '</td>' +
-            '</tr>');
+            '</div>'+
+            '</div>'
+
+        )
+
 
 
         });

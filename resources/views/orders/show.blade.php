@@ -23,11 +23,23 @@
         </div>
     </div>
 
+
+@if ($order->parcels->count())
+    <div>
+        @foreach ($order->parcels as $parcel)
+        <li>{{$parcel->quantity }}      {{$parcel->description}}
+        </li>
+        @endforeach
+    </div>
+    @endif
+
+
+    <p>
+        <a class="btn btn-primary" href="/orders/{{$order->id}}/edit" role="Editar pedido">Link</a>
+    </p>
+
 </div>
 
-<p>
-<a class="btn btn-primary" href="/orders/{{$order->id}}/edit" role="Editar pedido">Link</a>
-</p>
 
 
 

@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="field">
-        <label class="" for="Descrição">Descrição</label>
+        <label class="label" for="Descrição">Descrição</label>
 
         <div class="control">
             <input type="text" class="textarea" name="description" placeholder="description"
