@@ -54,13 +54,6 @@ class OrdersController extends Controller
         $order->owners_id = 0;
         $order->save();
 
-
-
-
-
-
-
-
         return redirect('/orders');
     }
 

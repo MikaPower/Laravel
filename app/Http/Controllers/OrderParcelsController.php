@@ -42,6 +42,8 @@ class OrderParcelsController extends Controller
          $i++;
      }
 
+     return redirect('orders');
+
     }
 
     /**

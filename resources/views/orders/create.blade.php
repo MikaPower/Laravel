@@ -14,14 +14,14 @@
                     <label for="exampleInputEmail1">Numero Pedido</label>
                     <input type="text" class="form-control is-valid" id="exampleInputEmail1"
                            aria-describedby="emailHelp"
-                           name="order" placeholder="Numero" value="{{old('quantity')}}" required >
+                           name="order" placeholder="Pedido id" value="{{old('order')}}" required >
                 </div>
         </div>
 
         <div class="col-6">
             <div class="form-group" id="testev1">
                 <label for="exampleInputPassword1">Titulo</label>
-                <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="title" placeholder="Texto"  value="{{ old('description')}}" required>
+                <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="title" placeholder="Texto"  value="{{ old('title')}}" required>
             </div>
         </div>
 
