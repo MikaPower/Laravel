@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Parcel;
 use Illuminate\Http\Request;
+use  App\Order;
 
 class OrderParcelsController extends Controller
 {
@@ -23,7 +25,7 @@ class OrderParcelsController extends Controller
      */
     public function create()
     {
-        return view (parcels.create);
+      //  return view (parcels.create);
     }
 
     /**
@@ -32,9 +34,14 @@ class OrderParcelsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Order $order)
+    public function store(Order $order, Request $request)
     {
-$order->addParcel(request('quantity[]','description'));
+        $i=0;
+     while($i<count($request->quantity)){
+         $order->addParcel($request->quantity[$i], $request->description[$i]);
+         $i++;
+     }
+
     }
 
     /**

@@ -34,10 +34,10 @@
     </p>
 
 </div>
-<div class="container" id="contem">
+<div class="container">
     <div class="row justify-content-center "id="teste">
         <div class="col">
-            <form method="post" action="/orders" id="add_name">
+            <form method="post" action="/orders/{{$order->id}}/parcels" id="add_name">
                 {{csrf_field()}}
                 <div class="form-group" id="dynamic_field">
                     <label for="exampleInputEmail1">Quantidade</label>
@@ -59,12 +59,12 @@
             <button type="button" name="add" id="add" class="btn btn-success">Add More</button>
         </div>
 
-
-
     </div>
     <div class="row">
         <div class="col">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
+</div>
+</form>
 @endsection
