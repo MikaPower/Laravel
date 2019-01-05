@@ -151,12 +151,14 @@ if((document.getElementById($id)).value==0) {
         (document.getElementById($id)).setAttribute("value","0");
         (document.getElementById("quantity" + $id)).disabled = true;
         (document.getElementById("description" + $id)).disabled = true;
+        (document.getElementById("button" + $id)).dele = true;
     }
 }
 
-    function add() {
+    function add($id) {
         var button = document.createElement("input");
         button.type = "button";
+        button.id="button"+$id;
         button.value = "im a button";
         var foo = document.getElementById("teste");
         foo.appendChild(button);
