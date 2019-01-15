@@ -92,12 +92,11 @@
 
     @endforeach
     @endif
-
 <div class="row justify-content-center">
 <h1>Adicionar mais produtos</h1>
 </div>
 
-        <form method="post" action="/orders/{{$order->id}}/parcels" id="add_name">
+        <form method="post" action="/orders/{{$order->id}}/parcels"  id="contem">
             <div class="form-row justify-content-center">
                 <div class="col-md-4 mb-3">
             {{csrf_field()}}
@@ -129,7 +128,7 @@
 </div>
 </form>
 </div>
-@endsection
+
 
 
 
@@ -164,11 +163,192 @@ if((document.getElementById($id)).value==0) {
         foo.appendChild(button);
         }
 
-
-
-
-
-
-
-
     </script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    $(document).ready(function () {
+        var postURL = "<?php echo url('orders'); ?>";
+        var i = 1;
+        $('#add').click(function () {
+            i++;
+            $('#contem').append(
+                '<div class="form-row justify-content-center">' +
+                ' <div class="col-md-4 mb-3"> ' +
+
+
+                ' <div class="form-group" id="dynamic_field">' +
+                ' <label for="exampleInputEmail1">Quantidade</label>' +
+                ' <input type="text" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" name="quantity[]" placeholder="Numero" value="" required>' +
+                '</div>' +
+                '</div>' +
+
+                '<div class="col-md-4 mb-3">' +
+                '<div class="form-group" id="testev1">' +
+                '<label for="exampleInputPassword1">Produto</label>' +
+                '<input type="text" class="form-control is-valid" id="exampleInputPassword1" name="description[]" placeholder="Texto" value="{{ old('description')}}" required>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+        )
+        });
+
+
+        $(document).on('click', '.btn_remove', function(){
+            var button_id = $(this).attr("id");
+            $('#row'+button_id+'').remove();
+        });
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('#submit').click(function(){
+            $.ajax({
+                url:postURL,
+                method:"POST",
+                data:$('#add_name').serialize(),
+                type:'json',
+                success:function(data)
+                {
+                    if(data.error){
+                        printErrorMsg(data.error);
+                    }else{
+                        i=1;
+                        $('.dynamic-added').remove();
+                        $('#add_name')[0].reset();
+                        $(".print-success-msg").find("ul").html('');
+                        $(".print-success-msg").css('display','block');
+                        $(".print-error-msg").css('display','none');
+                        $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+                    }
+                }
+            });
+        });
+
+
+        function printErrorMsg (msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display','block');
+            $(".print-success-msg").css('display','none');
+            $.each( msg, function( key, value ) {
+                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+            });
+        }
+    });
+</script>
+
+<script>
+    function editbutton($id) {
+        // if (document.getElementById("$editparcel").value === "0") {
+        //  (document.getElementById("button.$id")).setAttribute("value", 1);
+        //(((document.getElementsByName(("edit")+$id)).disabled = true; //butao fica disable
+        add($id);
+
+        if((document.getElementById($id)).value==0) {
+            (document.getElementById($id)).setAttribute("value","1");
+            (document.getElementById("quantity" + $id)).disabled = false;
+            (document.getElementById("description" + $id)).disabled = false;
+        }
+        else{
+            (document.getElementById($id)).setAttribute("value","0");
+            (document.getElementById("quantity" + $id)).disabled = true;
+            (document.getElementById("description" + $id)).disabled = true;
+            (document.getElementById("button" + $id)).dele = true;
+        }
+    }
+
+    function add($id) {
+        var button = document.createElement("input");
+        button.type = "button";
+        button.id="button"+$id;
+        button.value = "im a button";
+        var foo = document.getElementById("teste");
+        foo.appendChild(button);
+    }
+
+</script>
+<script>
+var f = document.createElement("form-row");
+/*f.setAttribute('method',"post");
+f.setAttribute('action',"submit.php");*/
+
+f.
+var i = document.createElement("input"); //input element, text
+i.setAttribute('type',"text");
+i.setAttribute('name',"username");
+
+var s = document.createElement("input"); //input element, Submit button
+s.setAttribute('type',"submit");
+s.setAttribute('value',"Submit");
+
+f.appendChild(i);
+f.appendChild(s);
+
+//and some more input elements here
+//and dont forget to add a submit button
+
+document.getElementsByTagName('body')[0].appendChild(f);
+
+</script>
+
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<script>
+
+    function add() {
+//Create an input type dynamically.
+        var element = document.createElement("input");
+//Assign different attributes to the element.
+        element.type = text;
+        element.value = type; // Really? You want the default value to be the type string?
+        element.name = teste; // And the name too?
+        element.onclick = function add() { // Note this is a function
+            alert("blabla");
+        };
+
+        var foo = document.getElementById("fooBar");
+//Append the element in page (in span).
+        foo.appendChild(element);
+    }
+
+    document.getElementById("btnAdd").onclick = function () {
+        add("text");
+    };
+-->
+

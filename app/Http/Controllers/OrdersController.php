@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
@@ -44,16 +45,16 @@ class OrdersController extends Controller
 
 
 
-    //attributes=request->validade(['quantity' => ['required', 'min:3']])
+   /*request()->validate(['quantity' => ['required'],'order'=>['required'],'owners_id'='0']);*/
+
+
+
+
+
         //Order::create($attributes);
 
-        $order= new Order();
-
-        $order->title = request('title');
-        $order->order = request('order');
-        $order->owners_id = 0;
-        $order->save();
-
+        $attributes= request()->validate(['title'=>'required'],['order'=>'required']);
+        Order::create($attributes);
         return redirect('/orders');
     }
 

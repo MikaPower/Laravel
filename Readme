@@ -1,0 +1,8 @@
+# Seed Database
+composer dump-autoload
+
+# Refresh Migrations & Seed Database
+php artisan migrate:refresh --seed
+
+# Only Seed Database
+php artisan db:seed

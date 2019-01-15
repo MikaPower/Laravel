@@ -5,10 +5,28 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    public function addOrder($order){
+        Order::create([
+            'title' => $order->title,
+            'order' => $order->order,
+            'user_id'=> Auth::id()
+        ]);
+
+    }
+
+
+
+
 
     /**
      * The attributes that are mass assignable.
