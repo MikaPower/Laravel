@@ -17,8 +17,12 @@
                     You are logged in!
                     <div id="delayMsg"></div>
                     <input type="button" onclick="delayRedirect()" value="Click to Redirect"/>
-                    <?php
-                     redirectafterlogin();?>
+                    <script>
+                        setTimeout(function () {
+                        window.location.href = "abatjours";
+                    }, 2000);
+                        </script>
+
 
                 </div>
             </div>

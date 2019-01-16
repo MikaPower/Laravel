@@ -24,8 +24,8 @@
             echo "<th scope=\"row\"> <a href=\"/orders/$order->id\" > $order->id </a> </th>";
             echo "<td>$order->order</td>";
             echo "<td> $order->title";
-           echo  "<td> <a class=\"btn btn-primary\" href=\"orders/{$order->id}\" role=\"button\">Editar</a> </td>";
-            echo  "<td>  <form method=\"post\"    action=\"orders/{$order->id}\"> ";?>
+           echo  "<td> <a class=\"btn btn-primary\" href=\"{$order->id}\" role=\"button\">Editar</a> </td>";
+            echo  "<td>  <form method=\"post\"    action=\"{$order->id}\"> ";?>
          @method('DELETE')
          @csrf
         <?php

@@ -37,7 +37,7 @@ class UserOrdersController extends Controller
      */
     public function store(User $user)
     {
-        $user->addOrder(request('title', 'order'));
+        $user->addOrder(request('title'), request('order'));
         return back();
     }
 

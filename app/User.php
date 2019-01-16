@@ -15,10 +15,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function addOrder($order){
+    public function addOrder($title, $order){
+
         Order::create([
-            'title' => $order->title,
-            'order' => $order->order,
+            'title' => $title,
+            'order' => $order,
             'user_id'=> Auth::id()
         ]);
 
