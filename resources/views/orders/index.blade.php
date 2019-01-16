@@ -33,9 +33,20 @@
             echo "</tr>";
          }
         ?>
+
     </tbody>
 </table>
+
              <a class="btn btn-primary" href="/orders/create" role="button">Criar Pedido</a>
+             <div class="row align-items-center">
+                 <br>
+                 <div class="col align-items-center">
+                     </br>
+             {{$orders->links()}}
+             </div>
+             </div>
+
 </div>
+
 </div>
 </div>

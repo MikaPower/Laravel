@@ -19,7 +19,17 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('orders.index', ['orders' => Order::all()]);
+
+     $orders=Order::where('user_id',auth()->id())->paginate(2);
+
+
+
+
+
+
+
+
+        return view('orders.index', ['orders' => $orders]);
     }
 
     /**
