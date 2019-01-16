@@ -22,13 +22,6 @@ class OrdersController extends Controller
 
      $orders=Order::where('user_id',auth()->id())->paginate(2);
 
-
-
-
-
-
-
-
         return view('orders.index', ['orders' => $orders]);
     }
 
@@ -51,17 +44,6 @@ class OrdersController extends Controller
     public function store()
     {
 
-        //Order::create(request(['owners_id'==1,'date'=>'getdate();','quantity','description']));//still requires ownners id
-
-
-
-   /*request()->validate(['quantity' => ['required'],'order'=>['required'],'owners_id'='0']);*/
-
-
-
-
-
-        //Order::create($attributes);
 
         $attributes= request()->validate(['title'=>'required'],['order'=>'required']);
         Order::create($attributes);
