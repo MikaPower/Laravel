@@ -12,6 +12,9 @@ class Order extends Model
     public function parcels(){
         return $this->hasMany(Parcel::class);
     }
+    public function users(){
+        return $this->belongsTo(User::class);
+    }
 
     public function addParcel($quantity,$description){
         $this->parcels()->create(compact('quantity','description'));
