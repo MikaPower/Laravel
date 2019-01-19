@@ -37,7 +37,8 @@ class UserOrdersController extends Controller
      */
     public function store(User $user)
     {
-        $user->addOrder(request('title'), request('order'));
+        $attributes= request()->validate(['title'=>'required','order'=>'required']);
+        $user->addOrder($attributes['title'],$attributes['order']);
         return redirect('/orders');
     }
 

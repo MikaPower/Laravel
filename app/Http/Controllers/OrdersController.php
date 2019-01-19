@@ -45,7 +45,7 @@ class OrdersController extends Controller
     {
 
 
-        $attributes= request()->validate(['title'=>'required'],['order'=>'required']);
+        $attributes= request()->validate(['title'=>'required','order'=>'required']);
         Order::create($attributes);
         return redirect('/orders');
     }
@@ -64,7 +64,8 @@ class OrdersController extends Controller
     public function show(Order $order)
 
     {
-        if($order->user_id() !== auth()->id()){
+
+        if($order->user_id!== auth()->id()){
             abort(403);
         }
         return view('orders.show',compact('order'));
