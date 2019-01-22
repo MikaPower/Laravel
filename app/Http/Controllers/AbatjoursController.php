@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Abatjours;
+use App\ImageModel;
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
 
 class AbatJoursController extends Controller
 {
@@ -31,7 +33,8 @@ class AbatJoursController extends Controller
      */
     public function create()
     {
-        return view('abatjours.create');
+        $image = ImageModel::latest()->first();
+        return view('abatjours.create', compact('image'));
     }
 
     /**
@@ -40,8 +43,33 @@ class AbatJoursController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'referencia'=> 'required',
+            'name'=> 'required',
+            'preço'=> 'required',
+
+        ]);
+
+        $originalImage= $request->file('filename');
+        $thumbnailImage = Image::make($originalImage);
+        $thumbnailPath = public_path().'/thumbnail/';
+        $originalPath = public_path().'/images/';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+        $thumbnailImage->resize(150,150);
+        $thumbnailImage->save($thumbnailPath.time().$originalImage->getClientOriginalName());
+
+        $imagemodel= new ImageModel();
+        $imagemodel->filename=time().$originalImage->getClientOriginalName();
+        $imagemodel->save();
+
+
+        $this->validate($request, [
+            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
+        ]);
+
         $abatjour = new Abatjours();
 
         $abatjour->referencia = request('referencia');
@@ -49,7 +77,11 @@ class AbatJoursController extends Controller
         $abatjour->price = request('price');
 
         $abatjour->save();
-        return redirect('/abatjours');
+
+        return back()->with('success', 'Your images has been successfully Upload');
+
+
+
     }
 
 

@@ -44,10 +44,10 @@ class OrdersController extends Controller
     public function store()
     {
 
-
-        $attributes= request()->validate(['title'=>'required','order'=>'required']);
+//Substituido pelo UserordersController
+      /*  $attributes= request()->validate(['title'=>'required','order'=>'required']);
         Order::create($attributes);
-        return redirect('/orders');
+        return redirect('/orders');*/
     }
 
 

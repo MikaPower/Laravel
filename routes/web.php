@@ -20,7 +20,6 @@ Route::resource('orders','OrdersController');
 Route::post('orders', 'UserOrdersController@store');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('orders/{order}/parcels', 'OrderParcelsController@store');
 
