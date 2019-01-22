@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImageModel extends Model
 {
-    public function user(){
-        return $this->belongsTo('Abatjours');
+    public function abatjours(){
+        return $this->belongsTo(Abatjours::class);
     }
 }

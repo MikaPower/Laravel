@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Abatjours;
 use App\ImageModel;
 use Illuminate\Http\Request;
-use Intervention\Image\Image;
+use Illuminate\Support\Facades\Auth;
+use Image;
 
 class AbatJoursController extends Controller
 {
@@ -17,7 +18,7 @@ class AbatJoursController extends Controller
 
     public function __construct()
     {
-      //  $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
@@ -49,9 +50,10 @@ class AbatJoursController extends Controller
             'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg',
             'referencia'=> 'required',
             'name'=> 'required',
-            'preço'=> 'required',
+            'price'=> 'required',
 
         ]);
+        $abatjour = new Abatjours();
 
         $originalImage= $request->file('filename');
         $thumbnailImage = Image::make($originalImage);
@@ -63,14 +65,14 @@ class AbatJoursController extends Controller
 
         $imagemodel= new ImageModel();
         $imagemodel->filename=time().$originalImage->getClientOriginalName();
+
+
+        $imagemodel->abatjours=$abatjour->id;
         $imagemodel->save();
 
 
-        $this->validate($request, [
-            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
-        ]);
 
-        $abatjour = new Abatjours();
+
 
         $abatjour->referencia = request('referencia');
         $abatjour->name = request('name');
