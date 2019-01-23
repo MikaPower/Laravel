@@ -69,13 +69,14 @@
             <div class="col-md-8">
                 <strong>Original Image:</strong>
                 <br/>
-                <img src="/imagens/{{$image->filename}}" alt="{{ $image->filename }}"/>
+                <img src="/storage/images/{{$image->filename}}" alt="{{ $image->filename }}" />
 
             </div>
+            <div class="row"
             <div class="col-md-4">
                 <strong>Thumbnail Image:</strong>
                 <br/>
-                <img src="/thumbnail/{{$image->filename}}"  />
+                <img src="/storage/thumbnail/{{$image->filename}}"  />
             </div>
         </div>
         @endif

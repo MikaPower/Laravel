@@ -16,7 +16,7 @@ class CreateAbatjoursTable extends Migration
         Schema::create('abatjours', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('referencia')->unique();
+            $table->integer('referencia');
             $table->text('name');
             $table->float('price');
 

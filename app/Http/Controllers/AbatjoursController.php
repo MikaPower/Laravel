@@ -62,16 +62,17 @@ class AbatJoursController extends Controller
 
 
         $originalImage= $request->file('filename');
-        $thumbnailImage = Image::make($originalImage);
-        $thumbnailPath = public_path().'/thumbnail/';
-        $originalPath = public_path().'/imagens/';
-        dd($originalPath);
-        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
-        $thumbnailImage->resize(150,150);
-        $thumbnailImage->save($thumbnailPath.time().$originalImage->getClientOriginalName());
+        $thumbnailImage = Image::make($originalImage); //creates image
+        $thumbnailImage->backup();
+        $thumbnailPath = public_path().'/storage/thumbnail/'; //storage/public/thumbnail but symbolic link shortens
+        $originalPath = public_path().'/storage/images/';
+        $thumbnailImage->save($originalPath.$originalImage->getClientOriginalName(),100);
+        $thumbnailImage->resize(400,400);
+        $thumbnailImage->save($thumbnailPath.$originalImage->getClientOriginalName());
+        $thumbnailImage->reset();
 
         $imagemodel= new ImageModel();
-        $imagemodel->filename=time().$originalImage->getClientOriginalName();
+        $imagemodel->filename=$originalImage->getClientOriginalName();
 
 
         $imagemodel->abatjour_id=$abatjour->id;
