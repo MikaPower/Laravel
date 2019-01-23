@@ -70,20 +70,10 @@ class AbatJoursController extends Controller
         $thumbnailImage->resize(400,400);
         $thumbnailImage->save($thumbnailPath.$originalImage->getClientOriginalName());
         $thumbnailImage->reset();
-
         $imagemodel= new ImageModel();
         $imagemodel->filename=$originalImage->getClientOriginalName();
-
-
         $imagemodel->abatjour_id=$abatjour->id;
         $imagemodel->save();
-
-
-
-
-
-
-
         return back()->with('success', 'Your images has been successfully Upload');
 
 
@@ -97,9 +87,9 @@ class AbatJoursController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Abatjour $abatjour)
     {
-        //
+        return view('abatjours.show',compact('abatjour'));
     }
 
     /**
