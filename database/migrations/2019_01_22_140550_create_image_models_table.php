@@ -16,7 +16,8 @@ class CreateImageModelsTable extends Migration
         Schema::create('image_models', function (Blueprint $table) {
             $table->increments('id');
             $table->string('filename');
-            $table->unsignedInteger('abatjours_id');
+            $table->unsignedInteger('abatjour_id');
+            $table->foreign('abatjour_id')->references('id')->on('abatjours');
             $table->timestamps();
         });
     }

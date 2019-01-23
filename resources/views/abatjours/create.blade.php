@@ -69,7 +69,8 @@
             <div class="col-md-8">
                 <strong>Original Image:</strong>
                 <br/>
-                <img src="/images/{{$image->filename}}" />
+                <img src="/imagens/{{$image->filename}}" alt="{{ $image->filename }}"/>
+
             </div>
             <div class="col-md-4">
                 <strong>Thumbnail Image:</strong>

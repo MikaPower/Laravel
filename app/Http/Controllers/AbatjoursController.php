@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Abatjours;
+use App\Abatjour;
 use App\ImageModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +23,7 @@ class AbatJoursController extends Controller
 
     public function index()
     {
-        return view('abatjours.index', ['abatjours' => Abatjours::all()]);
+        return view('abatjours.index', ['abatjours' => Abatjour::all()]);
     }
 
 
@@ -53,12 +53,19 @@ class AbatJoursController extends Controller
             'price'=> 'required',
 
         ]);
-        $abatjour = new Abatjours();
+        $abatjour = new Abatjour();
+        $abatjour->referencia = request('referencia');
+        $abatjour->name = request('name');
+        $abatjour->price = request('price');
+        $abatjour->save();
+
+
 
         $originalImage= $request->file('filename');
         $thumbnailImage = Image::make($originalImage);
         $thumbnailPath = public_path().'/thumbnail/';
-        $originalPath = public_path().'/images/';
+        $originalPath = public_path().'/imagens/';
+        dd($originalPath);
         $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
         $thumbnailImage->resize(150,150);
         $thumbnailImage->save($thumbnailPath.time().$originalImage->getClientOriginalName());
@@ -67,18 +74,14 @@ class AbatJoursController extends Controller
         $imagemodel->filename=time().$originalImage->getClientOriginalName();
 
 
-        $imagemodel->abatjours=$abatjour->id;
+        $imagemodel->abatjour_id=$abatjour->id;
         $imagemodel->save();
 
 
 
 
 
-        $abatjour->referencia = request('referencia');
-        $abatjour->name = request('name');
-        $abatjour->price = request('price');
 
-        $abatjour->save();
 
         return back()->with('success', 'Your images has been successfully Upload');
 
