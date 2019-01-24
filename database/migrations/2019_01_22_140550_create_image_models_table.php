@@ -17,7 +17,7 @@ class CreateImageModelsTable extends Migration
             $table->increments('id');
             $table->string('filename');
             $table->unsignedInteger('abatjour_id');
-            $table->foreign('abatjour_id')->references('id')->on('abatjours');
+            $table->foreign('abatjour_id')->references('id')->on('abatjours')->onDelete('cascade');
             $table->timestamps();
         });
     }
