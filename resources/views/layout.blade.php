@@ -63,8 +63,7 @@
             <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="background-color: #000000;color: white;">
-                <i class="fas fa-align-justify"></i>
-                Menu
+                <i class="fas fa-align-justify"></i> Menu
             </button>
             </nav>
             </div>

@@ -24,14 +24,17 @@
             }
             if($count==2) {
                 ?>
-                 <td>  <img src="/storage/images/{{$abatjour->imagemodels->filename}}"/> </td>";
+                 <td>  <img src="/storage/images/{{$abatjour->imagemodels->filename}}"
+                            style="max-width: 100%;max-height:100%; height: auto;" alt="{{ $abatjour->imagemodels->filename  }}"/> </td>
         <?php
                 $count=0;
-              echo " </tr>";            //se for o ultima da row, fecho a row e reinicio count;
+              echo " </tr>";            //se for o ultima da row, fecho a row e reinicio count
             }
             else{
-                echo "   <td><img src=\"/storage/images/$abatjour->imagemodels->filename\"
-                 style=\"max-width: 100%;max-height:100%; height: auto;\"/></td>";
+                ?>
+          <td><img src="/storage/images/{{$abatjour->imagemodels->filename}}"
+                   style="max-width: 100%;max-height:100%; height: auto;" alt="{{ $abatjour->imagemodels->filename  }}"/></td>
+        <?php
                 $count++;
             }
         }
