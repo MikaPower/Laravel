@@ -41,10 +41,10 @@
                    class="dropdown-toggle">Pedidos</a>
                 <ul class="collapse list-unstyled" id="pedidoSubmenu">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a href="/orders/create">Criar Pedido</a>
                     </li>
                     <li>
-                        <a href="#">Page 2</a>
+                        <a href="/orders/">Ver pedidos</a>
                     </li>
                     <li>
                         <a href="#">Page 3</a>
@@ -59,16 +59,18 @@
             </li>
         </ul>
     </nav>
-        <div class="container" style="padding-right: 12%">
+        <div id="content">
+            <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="background-color: #000000;color: white;">Menu
+            <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="background-color: #000000;color: white;">
                 <i class="fas fa-align-justify"></i>
+                Menu
             </button>
             </nav>
-
+            </div>
     @yield('content')
         </div>
-</div>
+        </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

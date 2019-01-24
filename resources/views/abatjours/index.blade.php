@@ -77,21 +77,11 @@
     </nav>
 
     <div id="content">
-
         <div class="container-fluid">
             <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="background-color: #000000;color: white;">Menu
                 <i class="fas fa-align-justify"></i>
             </button>
         </div>
-
-
-
-
-
-
-
-
-
 </div>
 
 
