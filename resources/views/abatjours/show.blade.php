@@ -16,30 +16,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-5">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Referencia</label>
-                            <input type="text" readonly class="form-control-plaintext" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp"
-                                   name="referencia" placeholder="Referencia" value="{{$abatjour->reference}}">
-                        </div>
+                        <h1 class="display-3">Referencia</h1>
+                        <h1 class="display-4">{{$abatjour->referencia}}</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Name</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="name"
-                                   placeholder="Name" value="{{$abatjour->name}}">
-                        </div>
+                        <h1 class="display-3">Nome</h1>
+                        <h1 class="display-4">{{$abatjour->name}}</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Price</label>
-                            <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="price"
-                                   placeholder="Price" value="{{$abatjour->price}}">
-                        </div>
+                        <h1 class="display-3">Preço</h1>
+                        <h1 class="display-4">{{$abatjour->price}}</h1>
+
                     </div>
                 </div>
             </div>

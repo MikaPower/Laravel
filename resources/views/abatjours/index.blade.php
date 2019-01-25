@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
 
-<div class="container">
+<div class="container w-100">
     @if($abatjours->count())
     <table class="table" style="table-layout: fixed">
         <thead>
         <tr>
-            <th scope="col">First</th>
+            <th scope="col" style="height: 100%">First</th>
             <th scope="col">Last</th>
             <th scope="col">Handle</th>
         </tr>
@@ -18,29 +18,21 @@
 
         foreach ($abatjours as $abatjour) {
             if($count==0){                               //caso seja inicio da row
-                echo "<tr>";
+                echo "<tr style=\"max-width:100%; max-height:100%;\">";
             }
             if($count==2) {
                 ?>
-                 <td>
-                     <div class="card style" style="max-width: 100%;">
+                 <td >
+                     <div class="card style" style="max-width: 100%;max-height: 100%;overflow: auto;height: auto;">
                          <img class="card-img-top" src="/storage/images/{{$abatjour->imagemodels->filename}}" alt="Card image cap"
                               style="max-width: 100%;max-height:100%; height: auto;">
                          <div class="card-body">
-                             <h5 class="card-title">Card title</h5>
-                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                             <h5 class="card-title">Referencia: {{$abatjour->referencia}}</h5>
+                             <h5 class="card-text">Nome: {{$abatjour->name}}</h5>
+                             <h5 class="card-text">Preço: {{$abatjour->price}}</h5>
+                             <a href="/abatjours/{{$abatjour->id}}" class="btn btn-primary">Detalhes</a>
                          </div>
                      </div>
-
-
-
-
-
-
-
-
-
 
                       </td>
         <?php
@@ -49,8 +41,18 @@
             }
             else{
                 ?>
-          <td><img src="/storage/images/{{$abatjour->imagemodels->filename}}" class="img-fluid" alt="Responsive image"
-                   style="max-width: 100%;max-height:100%; height: auto;"/></td>
+          <td style="max-height: 100%; max-width: 100%;">
+              <div class="card style" style="max-width: 100%; max-height: 100%; height: auto;">
+                  <img class="card-img-top" src="/storage/images/{{$abatjour->imagemodels->filename}}" alt="Card image cap"
+                       style="max-width: 100%;max-height:100%; height: auto;">
+                  <div class="card-body">
+                      <h5 class="card-title">Referencia: {{$abatjour->referencia}}</h5>
+                      <h5 class="card-text">Nome: {{$abatjour->name}}</h5>
+                      <h5 class="card-text">Preço: {{$abatjour->price}}</h5>
+                      <a href="/abatjours/{{$abatjour->id}}" class="btn btn-primary">Detalhes</a>
+                  </div>
+              </div>
+          </td>
         <?php
                 $count++;
             }
@@ -58,6 +60,7 @@
         ?>
         </tbody>
     </table>
+    {{ $abatjours->links() }}
 @endif
 </div>
 

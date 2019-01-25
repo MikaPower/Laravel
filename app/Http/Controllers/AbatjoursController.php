@@ -23,7 +23,8 @@ class AbatJoursController extends Controller
 
     public function index()
     {
-        return view('abatjours.index', ['abatjours' => Abatjour::all()]);
+        $abatjours = Abatjour::paginate(3);
+        return view('abatjours.index', ['abatjours' => $abatjours]);
     }
 
 
