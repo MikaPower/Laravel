@@ -18,7 +18,7 @@
                     <div class="col-5">
                         <h1 class="display-3">Referencia</h1>
                         <h1 class="display-4">{{$abatjour->referencia}}</h1>
-                    </div>sss
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-8">
