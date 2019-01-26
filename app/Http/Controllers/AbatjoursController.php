@@ -18,7 +18,7 @@ class AbatJoursController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auths');
+        $this->middleware('auth');
     }
 
     public function index()
