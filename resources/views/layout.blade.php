@@ -17,7 +17,7 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>J.M Pinto Abat-Jours</h3>
+            
         </div>
 
         <ul class="list-unstyled components">
@@ -61,8 +61,9 @@
     </nav>
         <div id="content">
             <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="background-color: #000000;color: white;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light"
+                 style="background-image:  url(/storage/images/JMPINTOLOGOv5.svg);background-size: cover;">
+            <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" >
                 <i class="fas fa-align-justify"></i> Menu
             </button>
             </nav>
