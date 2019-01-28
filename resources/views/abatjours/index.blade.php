@@ -18,12 +18,12 @@
 
         foreach ($abatjours as $abatjour) {
             if($count==0){                               //caso seja inicio da row
-                echo "<tr style=\"max-width:100%; max-height:100%;\">";
+                echo "<tr>";
             }
             if($count==2) {
                 ?>
-                 <td >
-                     <div class="card style" style="max-width: 100%;max-height: 100%;overflow: auto;height: auto;">
+                 <td>
+                     <div class="card style">
                          <img class="card-img-top" src="/storage/images/{{$abatjour->imagemodels->filename}}" alt="Card image cap"
                               style="max-width: 100%;max-height:100%; height: auto;">
                          <div class="card-body">
@@ -41,8 +41,8 @@
             }
             else{
                 ?>
-          <td style="max-height: 100%; max-width: 100%;">
-              <div class="card style" style="max-width: 100%; max-height: 100%; height: auto;">
+          <td>
+              <div class="card style">
                   <img class="card-img-top" src="/storage/images/{{$abatjour->imagemodels->filename}}" alt="Card image cap"
                        style="max-width: 100%;max-height:100%; height: auto;">
                   <div class="card-body">
