@@ -40,105 +40,168 @@
 
     @if ($order->parcels->count())
 
-        @foreach ($order->parcels as $parcel)
-    <form class="needs-validation" method="post" action="/parcels/{{$parcel->id}}"  novalidate>
-            <div class="form-row justify-content-center ">
-                <div class="col-md-4 mb-3">
-                    <!-- NAO CRIAR LABELS SEMPRE QUE EXISTE UM-->
-                    <?php
-                    if ($i == 0) {
-                        echo "   <label for=\"validationCustom01\"> Quantidade</label>";
-                    }
-                    ?>
+    @foreach ($order->parcels as $parcel)
+    <form class="needs-validation" method="post" action="/parcels/{{$parcel->id}}" novalidate>
+        <div class="form-row justify-content-center ">
+            <div class="col-md-4 mb-3">
+                <!-- NAO CRIAR LABELS SEMPRE QUE EXISTE UM-->
+                <?php
+                if ($i == 0) {
+                    echo "   <label for=\"validationCustom01\"> Quantidade</label>";
+                }
+                ?>
 
-                    <input type="text" class="form-control" id="quantity{{$parcel->id}}" placeholder="First name"
-                           name="quantity[]"
-                           value="{{$parcel->quantity}}" required disabled>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <!-- NAO CRIAR LABELS SEMPRE QUE EXISTE UM-->
-                    <?php
-                    if ($i == 0) {
-                        echo "<label for=\"validationCustom02\">Pedido</label>";
-                        $i++;
-                    }
-                    ?>
-
-
-                    <input type="text" class="form-control" id="description{{$parcel->id}}" placeholder="Last name"
-                           value="{{$parcel->description}}" name="description[]"
-                           required disabled>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="col align-self-center" id="teste">
-                    <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" value="0" name="edit{{$parcel->id}}" id="{{$parcel->id}}" onclick="editbutton(id)">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Editar
-                        </label>
-                    </div>
-
-
+                <input type="text" class="form-control" id="quantity{{$parcel->id}}" placeholder="First name"
+                       name="quantity[]"
+                       value="{{$parcel->quantity}}" required disabled>
+                <div class="valid-feedback">
+                    Looks good!
                 </div>
             </div>
+            <div class="col-md-4 mb-3">
+                <!-- NAO CRIAR LABELS SEMPRE QUE EXISTE UM-->
+                <?php
+                if ($i == 0) {
+                    echo "<label for=\"validationCustom02\">Pedido</label>";
+                    $i++;
+                }
+                ?>
+
+
+                <input type="text" class="form-control" id="description{{$parcel->id}}" placeholder="Last name"
+                       value="{{$parcel->description}}" name="description[]"
+                       required disabled>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col align-self-center" id="teste">
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" value="0" name="edit{{$parcel->id}}"
+                           id="{{$parcel->id}}" onclick="editbutton(id)">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Editar
+                    </label>
+                </div>
+
+
+            </div>
+        </div>
 
     </form>
 
 
     @endforeach
     @endif
-<div class="row justify-content-center">
-<h1>Adicionar mais produtos</h1>
-</div>
-
-        <form method="post" action="/orders/{{$order->id}}/parcels"  id="contem">
-            <div class="form-row justify-content-center">
-                <div class="col-md-4 mb-3">
-            {{csrf_field()}}
-            <div class="form-group" id="dynamic_field">
-                <label for="exampleInputEmail1">Quantidade</label>
-                <input type="text" class="form-control is-valid" id="exampleInputEmail1"
-                       aria-describedby="emailHelp"
-                       name="quantity[]" placeholder="Numero" value="{{old('quantity')}}" required>
-            </div>
-                </div>
-                <div class="col-md-4 mb-3">
-        <div class="form-group" id="testev1">
-            <label for="exampleInputPassword1">Produto</label>
-            <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="description[]"
-                   placeholder="Texto" value="{{ old('description')}}" required>
-        </div>
-                </div>
-            <div class="col align-self-center">
-                <button type="button" name="add" id="add" class="btn btn-success">Add More</button>
-        </div>
-                </div>
-
-
-
-<div class="row">
-    <div class="col">
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="row justify-content-center">
+        <h1>Adicionar mais produtos</h1>
     </div>
+    <form method="post" action="/orders/{{$order->id}}/parcels">
+        <div class="form-row justify-content-center" id="contem">
+            <div class="col-md-4 mb-3">
+                {{csrf_field()}}
+                <div class="form-group" id="dynamic_field">
+                    <label for="exampleInputEmail1">Quantidade</label>
+                    <input type="text" class="form-control is-valid" id="exampleInputEmail1"
+                           aria-describedby="emailHelp"
+                           name="quantity[]" placeholder="Numero" value="{{old('quantity')}}" required>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="form-group" id="testev1">
+                    <label for="exampleInputPassword1">Produto</label>
+                    <input type="text" class="form-control is-valid" id="exampleInputPassword1" name="description[]"
+                           placeholder="Texto" value="{{ old('description')}}" required>
+                </div>
+            </div>
+            <div class="col align-self-center">
+                <button type="button" onclick="education_fields()" name="add" id="add" class="btn btn-success">Add
+                    More
+                </button>
+            </div>
+        </div>
+
+
+        <div class="row" id="antes">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
-</form>
-</div>
+
+
+<script>
+    var room = 1;
+    function education_fields() {
+
+
+        Element.prototype.appendAfter = function (element) {
+            element.parentNode.insertBefore(this, element.nextSibling);
+        }, false;
+
+        var objTo = document.getElementById('contem');
+        var divtest = document.createElement("div");
+        divtest.setAttribute("class", "form-group" + room);
+        divtest.setAttribute("id", "form" + room);
+        var rdiv = 'removeclass' + room;
+        divtest.innerHTML = '<div class="form-row"> <div class="col-md-4 mb-3"> <div class="form-group" id="dynamic_field">  <input type="text" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp"name="quantity[]" placeholder="Numero" value="{{old('
+        quantity
+        ')}}" required> </div> </div> ' +
+        '<div class="col-md-4 mb-3"> ' +
+        '<div class="form-group" id="testev1">  ' +
+        '<input type="text" class="form-control is-valid" id="example1" name="description[]"placeholder="Texto" value="{{ old('
+        description
+        ')}}" required>' +
+        '</div>' +
+        '</div>' +
+        '<div class="col ">' +
+        '<button type="button"  id=' + room + ' onclick="remove(id)" class="btn btn-success">Add More' +
+        '</button>';
+        //  objTo.appendChild(divtest);
+        if (room === 1) {
+        divtest.appendAfter(document.getElementById('contem'));
+        room = room + 1;
+    }
+    else{
+            divtest.appendAfter(document.getElementById(("form"+(room-1))));
+            room=room+1;
+        }
+
+
+
+
+    }
+
+</script>
+<script>
+    function remove($rid) {
+        document.getElementById("form"+$rid).outerHTML="";
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 <script>
-    function editbutton($id) {
+    function editbutton($id) { //passo id
         // if (document.getElementById("$editparcel").value === "0") {
         //  (document.getElementById("button.$id")).setAttribute("value", 1);
         //(((document.getElementsByName(("edit")+$id)).disabled = true; //butao fica disable
-
-
         add($id);
 
 if((document.getElementById($id)).value==0) {
@@ -147,10 +210,11 @@ if((document.getElementById($id)).value==0) {
     (document.getElementById("description" + $id)).disabled = false;
     }
     else{
+        //se ja tiver on
         (document.getElementById($id)).setAttribute("value","0");
         (document.getElementById("quantity" + $id)).disabled = true;
         (document.getElementById("description" + $id)).disabled = true;
-        (document.getElementById("button" + $id)).dele = true;
+        (document.getElementById("button" + $id)).disable = true;
     }
 }
 
@@ -271,29 +335,7 @@ if((document.getElementById($id)).value==0) {
     }
 
 </script>
-<script>
-var f = document.createElement("form-row");
-/*f.setAttribute('method',"post");
-f.setAttribute('action',"submit.php");*/
 
-f.
-var i = document.createElement("input"); //input element, text
-i.setAttribute('type',"text");
-i.setAttribute('name',"username");
-
-var s = document.createElement("input"); //input element, Submit button
-s.setAttribute('type',"submit");
-s.setAttribute('value',"Submit");
-
-f.appendChild(i);
-f.appendChild(s);
-
-//and some more input elements here
-//and dont forget to add a submit button
-
-document.getElementsByTagName('body')[0].appendChild(f);
-
-</script>
 
 @endsection
 

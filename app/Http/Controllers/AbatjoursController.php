@@ -7,6 +7,7 @@ use App\ImageModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use Spatie\Glide\GlideImage;
 
 class AbatJoursController extends Controller
 {

@@ -24,3 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('orders/{order}/parcels', 'OrderParcelsController@store');
 
 
+//Imagens
+Route::get('/img/{path}', 'ImageController@show')->where('path', '.*');
+

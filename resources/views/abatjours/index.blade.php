@@ -19,17 +19,17 @@
         foreach ($abatjours as $abatjour) {
             if($count==0){
                 ?>
-              <tr style="width: 1110px; height: 434px">
+              <tr>
                   <?php
             }
 
             if($count==2) {
                 ?>
-                 <td >
-                     <div class="card h-100">
+                 <td  style="max-width: 300px;max-height:225px; height: auto;width: auto">
+                     <div class="card h-100" style="max-width: 300px">
                          <img class="card-img-top" src="/storage/images/{{$abatjour->imagemodels->filename}}" alt="Card image cap"
-                              style="max-width: 100%;max-height:100%; height: auto;">
-                         <div class="card-body" style="position: absolute;bottom: 0;">
+                           style="max-width: 300px;max-height:225px; height: auto;width: auto">
+                         <div class="card-body">
                              <h5 class="card-title align-items-end">Referencia: {{$abatjour->referencia}}</h5>
                              <h5 class="card-text align-items-end">Nome: {{$abatjour->name}}</h5>
                              <h5 class="card-text align-items-end">Preço: {{$abatjour->price}}</h5>
@@ -44,11 +44,11 @@
             }
             else{
                 ?>
-          <td>
-              <div class="card h-100">
+          <td  style="max-width: 300px;max-height:225px; height: auto;width: auto">
+              <div class="card h-100" style="max-width: 300px">
                   <img class="card-img-top" src="/storage/images/{{$abatjour->imagemodels->filename}}" alt="Card image cap"
-                       style="max-width: 100%;max-height:100%; height: auto;">
-                  <div class="card-body" style="position: absolute;bottom: 0;">
+                       style="max-width: 300px;max-height:225px; height: auto;width: auto">
+                  <div class="card-body">
                       <h5 class="card-title align-items-end">Referencia: {{$abatjour->referencia}}</h5>
                       <h5 class="card-text align-items-end">Nome: {{$abatjour->name}}</h5>
                       <h5 class="card-text align-items-end">Preço: {{$abatjour->price}}</h5>

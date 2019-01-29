@@ -1,10 +1,11 @@
-@include('layout')
+@extends('layout')
 
-<div class="container-fluid">
+@section('content')
+<div class="container">
     <div class="row align-items-center justify-content-center">
-        <div class="col-6">
+        <div class="col">
             <H1 class="text-center" ">Pedidos</H1>
-            <table class="table">
+            <table class="table-responsive">
 
                 <thead class="table-dark">
                 <tr>
@@ -25,7 +26,7 @@
                     echo "<td>$order->order</td>";
                     echo "<td> $order->title";
 
-                    echo '<td> <a class="btn btn-primary" href="/orders/'.$order->id.'" role="button">Edit55555ar</a> </td>';
+                    echo '<td> <a class="btn btn-primary" href="/orders/'.$order->id.'" role="button">Editar</a> </td>';
                     echo "<td>  <form method=\"post\"    action=\"{$order->id}\"> "; ?>
                     @method('DELETE')
                     @csrf
@@ -51,3 +52,4 @@
 
     </div>
 </div>
+@endsection

@@ -9,7 +9,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 </head>
 <body>
@@ -17,7 +17,8 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            
+            <h3> J M Pinto Abat Jours</h3>
+            <img src="/storage/images/JMPINTOLOGO_V2.png" class="img-fluid" alt="Responsive image">
         </div>
 
         <ul class="list-unstyled components">
