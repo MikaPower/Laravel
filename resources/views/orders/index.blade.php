@@ -2,21 +2,21 @@
 
 @section('content')
 <div class="container">
-    <div class="row align-items-center justify-content-center">
+    <div class="row ">
         <div class="col">
             <H1 class="text-center" ">Pedidos</H1>
-            <table class="table-responsive">
+            <table class="table-responsive table-bordered">
 
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">ID#</th>
                     <th scope="col">Pedido Numero</th>
-                    <th class="col-md-4" scope="col">Titulo</th>
+                    <th style="width: 50%;" class="col" >Titulo</th>
                     @role('admin')
-                    <th class="col" scope="col">Cliente</th>
+                    <th class="col" >Cliente</th>
                     @endrole
-                    <th class="col" scope="col"></th>
-                    <th class="col" scope="col"></th>
+                    <th class="col" ></th>
+                    <th class="col" ></th>
                 </tr>
                 </thead>
                 <tbody>
