@@ -16,7 +16,7 @@ Route::get('/','AbatJoursController@index');
 
 Route::resource('abatjours','AbatJoursController');
 
-Route::resource('orders','OrdersController');
+Route::resource('orders','OrdersController') ;
 Route::post('orders', 'UserOrdersController@store');
 
 Auth::routes();

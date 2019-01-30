@@ -11,7 +11,10 @@
                 <tr>
                     <th scope="col">ID#</th>
                     <th scope="col">Pedido Numero</th>
-                    <th class="col-md-8" scope="col">Titulo</th>
+                    <th class="col-md-4" scope="col">Titulo</th>
+                    @role('admin')
+                    <th class="col" scope="col">Cliente</th>
+                    @endrole
                     <th class="col" scope="col"></th>
                     <th class="col" scope="col"></th>
                 </tr>
@@ -24,7 +27,12 @@
                     echo "<tr>";
                     echo "<th scope=\"row\"> <a href=\"/orders/$order->id\" > $order->id </a> </th>";
                     echo "<td>$order->order</td>";
-                    echo "<td> $order->title";
+                    echo "<td> $order->title</td>";
+               if(Auth()->user()->hasRole('admin')) {
+                   ?>
+                     <td> {{Auth::user()->name}}</td>
+                   <?php
+               }
 
                     echo '<td> <a class="btn btn-primary" href="/orders/'.$order->id.'" role="button">Editar</a> </td>';
                     echo "<td>  <form method=\"post\"    action=\"{$order->id}\"> "; ?>

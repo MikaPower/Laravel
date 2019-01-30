@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
@@ -12,12 +13,18 @@ class OrdersController extends Controller
     }
     /**
      * Display a listing of the resource.
-     *
+     * $this have no ideia
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+          //SE FOR ADMIN
 
+        if(Auth()->user()->hasRole('admin')){
+            $orders=Order::paginate(2);
+            return view('orders.index', ['orders' => $orders]);
+        }
+//Se for user normal
      $orders=Order::where('user_id',auth()->id())->paginate(2);
 
         return view('orders.index', ['orders' => $orders]);
@@ -30,6 +37,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
+
         return view('orders.create');
     }
 
@@ -63,9 +71,10 @@ class OrdersController extends Controller
 
     {
 
-        if($order->user_id!== auth()->id()){
-            abort(403);
-        }
+        $this->authorize('view', $order);
+
+//aborda casso utilizador nao seja dono da order
+    //  abort_if( $order->user_id!== auth()->id(),403);            USES POLICY
         return view('orders.show',compact('order'));
 
     }
@@ -78,6 +87,7 @@ class OrdersController extends Controller
      */
     public function edit(Order $order)
     {
+        $this->authorize('view', $order);
         return view('orders.edit',compact('order'));
 
     }
@@ -91,6 +101,7 @@ class OrdersController extends Controller
      */
     public function update(Order $order)
     {
+        $this->authorize('view', $order);
         $order->update(request(['order','title']));
         return redirect('/orders');
     }
@@ -103,6 +114,7 @@ class OrdersController extends Controller
      */
     public function destroy(Order $order)
     {
+        $this->authorize('view', $order);
         $order->delete();
         return redirect('/orders');
     }

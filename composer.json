@@ -16,7 +16,8 @@
         "laravel/tinker": "^1.0",
         "league/glide": "^1.4",
         "league/glide-laravel": "^1.0",
-        "spatie/laravel-glide": "^3.2"
+        "spatie/laravel-glide": "^3.2",
+        "spatie/laravel-permission": "^2.30"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
