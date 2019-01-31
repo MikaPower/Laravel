@@ -6,7 +6,7 @@ use App\User;
 use App\Order;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ProjectPolicy
+class OrderPolicy
 {
     use HandlesAuthorization;
 

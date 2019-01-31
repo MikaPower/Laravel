@@ -35,7 +35,7 @@
                }
 
                     echo '<td> <a class="btn btn-primary" href="/orders/'.$order->id.'" role="button">Editar</a> </td>';
-                    echo "<td>  <form method=\"post\"    action=\"{$order->id}\"> "; ?>
+                    echo "<td>  <form method=\"post\"    action=\"orders/{$order->id}\"> "; ?>
                     @method('DELETE')
                     @csrf
                     <?php

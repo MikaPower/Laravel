@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 
-<div class="container w-100">
+<div class="container">
     @if($abatjours->count())
     <table class="table h-100">
         <thead>

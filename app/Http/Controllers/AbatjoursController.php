@@ -100,11 +100,9 @@ class AbatJoursController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Abatjour $abatjour)
     {
-
-        $abatjour = Abatjours::find($id);
-
+        $this->authorize('view', $abatjour);
         return view('abatjours.edit', compact('abatjour'));
     }
 
@@ -114,17 +112,14 @@ class AbatJoursController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, $id)
+    public function update(Abatjour $abatjour)
     {
-        $abatjour = Abatjours::find($id);
-        $abatjour->referencia = request('referencia');
-        $abatjour->name = request('name');
-        $abatjour->price = request('price');
-
-        $abatjour->save();
-
-        return redirect('abatjours');
+        $this->authorize('view', $abatjour);
+        request()->validate('referencia','name','price');
+        $abatjour->update(request(['referencia','name','price']));
+        return redirect('/abatjours');
 
     }
 

@@ -60,16 +60,16 @@
             </li>
         </ul>
     </nav>
-        <div id="content">
-            <div class="container">
+        <div id="content" style="padding: 0;">
             <nav class="navbar navbar-expand-lg navbar-light bg-light flex-row" style="overflow: hidden;">
+            <div class="container" style="margin:0; justify-content: start;">
             <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="color: white;background-color: black">
                 <i class="fas fa-align-justify"></i> Menu
             </button>
          <!--       <img src="/storage/images/JMPINTOLOGOv2.png" class="img-fluid lex-shrink-1" alt="Responsive image">
 -->
             </nav>
-            </div>
+
     @yield('content')
         </div>
         </div>
