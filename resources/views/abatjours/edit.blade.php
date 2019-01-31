@@ -1,64 +1,51 @@
 @extends('layout')
+@section('content')
 
 
-@section ('content')
-<h1>Edit Project</h1>
 
-<form method="post" action="/abatjours/{{ $abatjour->id }}">
-    {{ method_field('PATCH') }}
-    {{ csrf_field()}}
-    <div class="field">
-        <label class="label" for="Referencia">Referencia</label>
+<style>
 
-        <div class="control">
-            <input type="text" class="input" name="referencia" placeholder="referencia"
-                   value="{{ $abatjour->referencia }}">
+    .container{
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .card{
+flex-direction: row;
+        height: 321px;
+        width: 700px;
+    }
+    .card-body-left{
+        padding: 0;
+    }
 
+</style>
+
+
+
+<div class="container">
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+
+    <div class="card" style="flex-direction: row">
+        <div class="card-body-left">
+            <img src="/storage/images/{{$abatjour->imagemodels->filename}}" style="max-width: 100%;max-height: 100%" class="img-fluid" alt="">
+        </div>
+
+        <div class="card-body right">
+            TESTING TEstring something
         </div>
     </div>
-
-
-    <div class="field">
-        <label class="label" for="nome">Nome</label>
-
-        <div class="control">
-            <textarea name="name" placeholder="Nome" class="textarea">{{ $abatjour->name }}</textarea>
-
-        </div>
-    </div>
-
-    <div class="field">
-        <label class="label" for="preco">Preço</label>
-
-        <div class="control">
-            <input type="text" class="input" name="price" placeholder="Preco" value="{{$abatjour->price}}">
-        </div>
-    </div>
-
-
-    <div class="field">
-        <div class="control">
-            <button type="submit" class="button is-link">Update</button>
-
-        </div>
-    </div>
-</form>
-
-
-<form METHOD="post" action="/abatjours/{{ $abatjour->id}}" style="margin-bottom:50px;">
-
-@method('DELETE')
-    @csrf
-
-
-    <div class="field">
-        <div class="control">
-            <button type="submit" class="button">Delete</button>
-        </div>
-    </div>
-</form>
-
-
 @endsection
 
 
