@@ -1,6 +1,8 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -30,7 +32,6 @@ class RolesAndPermissionsSeeder extends Seeder
             $role = Role::create(['name' => 'super-admin']);
             $role->givePermissionTo(Permission::all());
         }*/
-
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'provider']);
         Role::create(['name' => 'client']);

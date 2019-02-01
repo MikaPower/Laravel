@@ -3,6 +3,22 @@
 <head>
 
     <title></title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -61,7 +77,8 @@
         </ul>
     </nav>
         <div id="content" style="padding: 0;">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light flex-row" style="overflow: hidden;">
+            <nav class="navbar   flex-row" style="overflow: hidden;
+background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);">
             <div class="container" style="margin:0; justify-content: start;">
             <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="color: white;background-color: black">
                 <i class="fas fa-align-justify"></i> Menu
