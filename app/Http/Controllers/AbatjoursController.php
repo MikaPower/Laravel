@@ -45,6 +45,7 @@ class AbatJoursController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -117,7 +118,7 @@ class AbatJoursController extends Controller
     public function update(Abatjour $abatjour)
     {
         $this->authorize('view', $abatjour);
-        request()->validate('referencia','name','price');
+        request()->validate(['referencia','name','price']);
         $abatjour->update(request(['referencia','name','price']));
         return redirect('/abatjours');
 

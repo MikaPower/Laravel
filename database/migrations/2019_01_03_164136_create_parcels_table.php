@@ -17,8 +17,9 @@ class CreateParcelsTable extends Migration
             $table->increments('id');
             $table->integer('quantity');
             $table->longText('description');
-            $table->integer('state')->default(0);
             $table->unsignedInteger('order_id');
+            $table->unsignedInteger('state_id')->default('1');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->timestamps();
         });
     }

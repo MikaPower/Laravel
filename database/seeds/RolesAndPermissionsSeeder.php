@@ -35,6 +35,8 @@ class RolesAndPermissionsSeeder extends Seeder
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'provider']);
         Role::create(['name' => 'client']);
+        $user=User::find(1);
+        $user->assignRole('admin');
 
     }
 }

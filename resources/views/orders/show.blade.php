@@ -63,7 +63,6 @@
                 <?php
                 if ($i == 0) {
                     echo "<label for=\"validationCustom02\">Pedido</label>";
-                    $i++;
                 }
                 ?>
 
@@ -71,10 +70,34 @@
                 <input type="text" class="form-control" id="description{{$parcel->id}}" placeholder="Last name"
                        value="{{$parcel->description}}" name="description[]"
                        required disabled>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
+
+            <div class="col-md-4 mb-3">
+                <!-- NAO CRIAR LABELS SEMPRE QUE EXISTE UM-->
+                <?php
+                if ($i == 0) {
+                    echo "<label for=\"validationCustom02\">Estado</label>";
+                    $i++;
+                }
+                ?>
+                <input type="text" class="form-control" id="State" placeholder="Estado"
+                       value="{{$parcel->getStateNameById($parcel->state_id)}}" name="description[]"
+                       required disabled>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="col align-self-center" id="teste">
                 <div class="form-check ">
                     <input class="form-check-input" type="checkbox" value="0" name="edit{{$parcel->id}}"
@@ -152,7 +175,7 @@
         '<div class="form-group" id="testev1">  ' +
         '<input type="text" class="form-control is-valid" id="example1" name="description[]"placeholder="Texto" value="{{ old('
         description
-        ')}}" required>' +
+        ')}}" required>'
         '</div>' +
         '</div>' +
         '<div class="col ">' +

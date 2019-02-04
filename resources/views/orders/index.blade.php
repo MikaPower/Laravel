@@ -1,17 +1,25 @@
 @extends('layout')
 
 @section('content')
+
+<style>
+
+    td, th{
+        text-align: center;
+    }
+</style>
+
 <div class="container">
     <div class="row ">
         <div class="col">
             <H1 class="text-center" ">Pedidos</H1>
-            <table class="table-responsive table-bordered">
+            <table class="table-responsive table-bordered w-100 ">
 
                 <thead class="table-dark">
                 <tr>
-                    <th scope="col">ID#</th>
-                    <th scope="col">Pedido Numero</th>
-                    <th style="width: 50%;" class="col" >Titulo</th>
+                    <th style="width: 5%;" class="col">ID#</th>
+                    <th style="width: 5%;" class="col">Pedido Numero</th>
+                    <th style="width: 100%;" class="col" >Titulo</th>
                     @role('admin')
                     <th class="col" >Cliente</th>
                     @endrole
