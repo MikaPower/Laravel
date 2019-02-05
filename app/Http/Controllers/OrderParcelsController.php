@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use  App\Order;
 
+use Illuminate\Support\Facades\Input;
+
 class OrderParcelsController extends Controller
 {
     /**
@@ -76,9 +78,12 @@ class OrderParcelsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Order $order,Parcel $parcel)
     {
-        //
+       // $parcel->update(['state_id'=> request()->has('state_id')]);
+        request()->validate(['state_id'=>'required']);
+        $parcel->update(request(['state_id']));
+        return back();
     }
 
     /**

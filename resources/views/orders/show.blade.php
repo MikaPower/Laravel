@@ -1,7 +1,17 @@
 @extends('layout')
 
+@foreach ($order->parcels as $parcel)
+{{$parcel->getStateNamesNotUsed()}}
+
+
+
+
+
+@endforeach
+
 
 @section('content')
+
 
 
 <div class="container h-100">
@@ -16,6 +26,9 @@
                 <small class="text-muted">{{ $order->title }}</small>
             </h5>
         </div>
+        <div class="col">
+                <a class="btn btn-primary" href="/orders/{{$order->id}}/edit" role="Editar pedido">Editar</a>
+        </div>
     </div>
 
 
@@ -29,9 +42,7 @@
         @endif
     -->
 
-    <p>
-        <a class="btn btn-primary" href="/orders/{{$order->id}}/edit" role="Editar pedido">Editar</a>
-    </p>
+
     <?php
     $i = 0;
 
@@ -41,7 +52,7 @@
     @if ($order->parcels->count())
 
     @foreach ($order->parcels as $parcel)
-    <form class="needs-validation" method="post" action="/parcels/{{$parcel->id}}" novalidate>
+   <!-- <form class="needs-validation" method="post" action="/parcels/{{$parcel->id}}" novalidate>-->
         <div class="form-row justify-content-center ">
             <div class="col-md-4 mb-3">
                 <!-- NAO CRIAR LABELS SEMPRE QUE EXISTE UM-->
@@ -80,9 +91,18 @@
                     $i++;
                 }
                 ?>
-                <input type="text" class="form-control" id="State" placeholder="Estado"
-                       value="{{$parcel->getStateNameById($parcel->state_id)}}" name="description[]"
-                       required disabled>
+
+                <form method="post" action="/parcels/{{$parcel->id}}">
+                    @method('PATCH')
+                    @csrf
+                    <select class="form-control" name="state_id"  onchange="this.form.submit()">
+                        <option value="4">{{$parcel->getStateNamesNotUsed()}}</option>
+                        <option value="5">Pedido Apagado</option>
+                        <option value="2">Pedido Recebido</option>
+                        <option value="3">Pedido em Progresso</option>
+                        <option value="1">Pedido Enviado</option>
+                    </select>
+                </form>
             </div>
 
 
@@ -98,7 +118,7 @@
 
 
 
-            <div class="col align-self-center" id="teste">
+     <!--       <div class="col align-self-center" id="teste">
                 <div class="form-check ">
                     <input class="form-check-input" type="checkbox" value="0" name="edit{{$parcel->id}}"
                            id="{{$parcel->id}}" onclick="editbutton(id)">
@@ -108,10 +128,10 @@
                 </div>
 
 
-            </div>
+            </div>-->
         </div>
 
-    </form>
+<!--    </form>-->
 
 
     @endforeach

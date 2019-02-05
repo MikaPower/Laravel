@@ -22,6 +22,7 @@ Route::post('orders', 'UserOrdersController@store');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('orders/{order}/parcels', 'OrderParcelsController@store');
+Route::patch('/parcels/{parcel}', 'OrderParcelsController@update');
 
 
 //Imagens

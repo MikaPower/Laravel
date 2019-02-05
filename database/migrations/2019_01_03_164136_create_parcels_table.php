@@ -20,6 +20,7 @@ class CreateParcelsTable extends Migration
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('state_id')->default('1');
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }
