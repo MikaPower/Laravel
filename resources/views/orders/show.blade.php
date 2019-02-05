@@ -1,15 +1,8 @@
 @extends('layout')
 
-@foreach ($order->parcels as $parcel)
+<!--@foreach ($order->parcels as $parcel)
 {{$parcel->getStateNamesNotUsed()}}
-
-
-
-
-
-@endforeach
-
-
+@endforeach-->
 @section('content')
 
 
@@ -96,11 +89,18 @@
                     @method('PATCH')
                     @csrf
                     <select class="form-control" name="state_id"  onchange="this.form.submit()">
-                        <option value="4">{{$parcel->getStateNamesNotUsed()}}</option>
-                        <option value="5">Pedido Apagado</option>
-                        <option value="2">Pedido Recebido</option>
-                        <option value="3">Pedido em Progresso</option>
-                        <option value="1">Pedido Enviado</option>
+                        <option value="{{$parcel->state_id}}">
+                            {{$parcel->getStateNameById($parcel->state_id)}}</option>
+
+
+                        <?php
+                        $states=$parcel->getStateNamesNotUsed()
+                        ?>
+
+                        @foreach ($states as $state)
+
+                        <option value="{{$state->id}}">{{$state->name}}</option>
+                        @endforeach
                     </select>
                 </form>
             </div>

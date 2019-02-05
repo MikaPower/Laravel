@@ -16,20 +16,23 @@ class Parcel extends Model
      * @return Model|\Illuminate\Database\Query\Builder|null|object
      */
     public function getStateNameById($id){
-        dd($id);
         $name=DB::table('states')->where('id',$id)->value('name');
       return $name;
     }
 
     public function  getStateNamesNotUsed(){
 
-        $names=DB::table('states')
-            ->select('id','name')
-            ->get();
-        if($key=array_search($this->getStateNameById($this->id),$names)!==false){
-            print_r($key);
-        unset($names[$key]);
-        return $names;
+        $names=DB::table('states')->pluck('name')->all();
+      /*      ->select('id','name')
+            ->get();*/
+
+        $idnames=DB::table('states')
+              ->select('id','name')
+              ->get();
+
+        if(($key=array_search($this->getStateNameById(($this->state_id)),$names))!==false){
+        unset($idnames[$key]);
+        return $idnames;
         }
 
 return abort(403, 'getStateNamesNotUsed error');

@@ -37,6 +37,8 @@ class OrderParcelsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //falta validation
     public function store(Order $order, Request $request)
     {
         $i=0;
