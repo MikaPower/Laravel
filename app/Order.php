@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable =['order','title','user_id'];
+    protected $fillable =['order','title','user_id','provider_id'];
 
 
     public function parcels(){

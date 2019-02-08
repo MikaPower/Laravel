@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Parcel;
 use  App\Order;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserOrdersController extends Controller
 {
@@ -35,8 +36,20 @@ class UserOrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user)
+    public function store()
     {
+        //model route binding not working check route
+
+        $user=User::findOrFail(Auth::user()->id);
+        if ($user->hasAnyRole('admin')){
+        $attributes = request()->validate(['title' => 'required', 'order' => 'required',
+            'provider_id'=>'required']);
+        $user->addOrder($attributes['title'], $attributes['order'],$attributes['provider_id']);
+        return redirect('/orders');
+    }
+
+
+
         $attributes= request()->validate(['title'=>'required','order'=>'required']);
         $user->addOrder($attributes['title'],$attributes['order']);
         return redirect('/orders');

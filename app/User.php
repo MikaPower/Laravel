@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Null_;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -16,7 +17,19 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function addOrder($title, $order){
+    public function addOrder($title, $order,$provider=Null){
+
+        if($provider!=Null){
+           $order=Order::create([
+                'title' => $title,
+                'order' => $order,
+                'user_id'=> Auth::id(),
+                'provider_id'=>$provider
+            ]);
+
+        }
+        dd($order);
+
 
         Order::create([
             'title' => $title,

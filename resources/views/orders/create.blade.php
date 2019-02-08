@@ -17,12 +17,30 @@
                 </div>
         </div>
 
-        <div class="col-6">
+        <div class="col">
             <div class="form-group" id="testev1">
                 <label for="title">Titulo</label>
                 <input type="text" class="form-control is-valid" id="title" name="title" placeholder="Texto"  value="{{ old('title')}}" >
             </div>
         </div>
+        <?php use App\User; ?>
+        @hasrole('admin')
+            <div class="col">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Fornecedor</label>
+                    <select class="form-control" name="provider_id" id="exampleFormControlSelect1">
+                       <?php
+                       //BAD EXAMPLE, USE CONTROLLER MAYBE
+                       $users = User::role('provider')->get();
+                        ?>
+                        @foreach ($users as $user)
+                        <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+        </div>
+        @endhasrole
+
 
 
        <!-- <div class="col-3">

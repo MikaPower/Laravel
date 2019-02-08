@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
@@ -37,7 +38,6 @@ class OrdersController extends Controller
      */
     public function create()
     {
-
         return view('orders.create');
     }
 
