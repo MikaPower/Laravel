@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use App\Order;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class OrderPolicy
 {
@@ -22,6 +23,15 @@ class OrderPolicy
     {
         return $order->user_id == $user->id;
     }
+    public function view(User $user, Order $order)
+    {
 
+        if(Auth()->user()->hasRole('provider')){
+            return $order->provider_id == $user->id;
+
+        }
+
+        return $order->user_id == $user->id;
+    }
 
 }
