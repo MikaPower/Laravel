@@ -79,12 +79,14 @@
         <div id="content" style="padding: 0;">
             <nav class="navbar   flex-row" style="overflow: hidden;
 background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);">
-            <div class="container" style="margin:0; justify-content: start;">
+            <div class="container" style="justify-content: space-between;"> <!--margin:0-->
             <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" style="color: white;background-color: black">
                 <i class="fas fa-align-justify"></i> Menu
             </button>
          <!--       <img src="/storage/images/JMPINTOLOGOv2.png" class="img-fluid lex-shrink-1" alt="Responsive image">
--->
+-->     <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" href="/users" style="color: white;background-color: transparent">
+                    <i class="fas fa-user-alt"></i>   Utilizadores
+                </button>
             </nav>
 
     @yield('content')

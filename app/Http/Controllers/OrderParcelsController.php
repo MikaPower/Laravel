@@ -41,6 +41,13 @@ class OrderParcelsController extends Controller
     //falta validation
     public function store(Order $order, Request $request)
     {
+
+        request()->validate([
+            'quantity'=>'required',
+            'description'=>'required'
+        ]);
+
+
         $i=0;
      while($i<count($request->quantity)){
          $order->addParcel($request->quantity[$i], $request->description[$i]);
@@ -75,7 +82,7 @@ class OrderParcelsController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * Can only update the state
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
