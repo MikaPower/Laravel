@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Null_;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -36,6 +37,22 @@ class User extends Authenticatable
             'order' => $order,
             'user_id'=> Auth::id()
         ]);
+
+    }
+
+    /**
+     *Returns the list of roles which aren't used by the user
+     */
+    public function giveRoleNamesNotUsed()
+    {
+        $roles = Role::pluck('name')->all();
+
+        if (($key = array_search($this->getRoleNames()->all(), $roles)) !== false) {
+            unset($roles[$key]);
+        }
+
+
+        return $roles;
 
     }
 

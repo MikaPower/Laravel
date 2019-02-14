@@ -4,21 +4,6 @@
 
     <title></title>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -84,9 +69,10 @@ background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1)
                 <i class="fas fa-align-justify"></i> Menu
             </button>
          <!--       <img src="/storage/images/JMPINTOLOGOv2.png" class="img-fluid lex-shrink-1" alt="Responsive image">
--->     <button type="button" class="btn btn-default btn-lg" id="sidebarCollapse" href="/users" style="color: white;background-color: transparent">
+-->
+                <a href="/users" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="color: white;background-color: transparent;border-color: transparent">
                     <i class="fas fa-user-alt"></i>   Utilizadores
-                </button>
+                </a>
             </nav>
 
     @yield('content')
